@@ -95,6 +95,7 @@ typedef void (*tglGetTexImage) (GLenum target, GLint level, GLenum format, GLenu
 typedef void (*tglGenTextures) (GLsizei n, GLuint* textures);
 typedef void (*tglDeleteTextures) (GLsizei n, const GLuint* textures);
 typedef void (*tglBindTexture) (GLenum target, GLuint texture);
+typedef XVisualInfo* (*tglXChooseVisual) (Display* dpy, int screen, int* attribList);
 typedef GLXContext (*tglXCreateContext) (Display* dpy, XVisualInfo* vis, GLXContext shareList, int direct);
 typedef void (*tglXDestroyContext) (Display* dpy, GLXContext ctx);
 typedef int (*tglXMakeCurrent) (Display* dpy, GLXDrawable drawable, GLXContext ctx);
@@ -142,6 +143,7 @@ extern tglGetTexImage glGetTexImage_impl;
 extern tglGenTextures glGenTextures_impl;
 extern tglDeleteTextures glDeleteTextures_impl;
 extern tglBindTexture glBindTexture_impl;
+extern tglXChooseVisual glXChooseVisual_impl;
 extern tglXCreateContext glXCreateContext_impl;
 extern tglXDestroyContext glXDestroyContext_impl;
 extern tglXMakeCurrent glXMakeCurrent_impl;
@@ -188,6 +190,7 @@ void glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLvoi
 void glGenTextures(GLsizei n, GLuint* textures);
 void glDeleteTextures(GLsizei n, const GLuint* textures);
 void glBindTexture(GLenum target, GLuint texture);
+XVisualInfo* glXChooseVisual(Display* dpy, int screen, int* attribList);
 GLXContext glXCreateContext(Display* dpy, XVisualInfo* vis, GLXContext shareList, int direct);
 void glXDestroyContext(Display* dpy, GLXContext ctx);
 int glXMakeCurrent(Display* dpy, GLXDrawable drawable, GLXContext ctx);

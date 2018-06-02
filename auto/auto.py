@@ -28,6 +28,7 @@ WRAPPER_FUNCTIONS = (
     "glXGetProcAddressARB",
     "glXGetClientString",
     "glXQueryVersion",
+    "glXChooseVisual",
 
     "glBindTexture",
     "glBlendFunc",

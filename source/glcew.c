@@ -113,6 +113,7 @@ tglGetTexImage glGetTexImage_impl;
 tglGenTextures glGenTextures_impl;
 tglDeleteTextures glDeleteTextures_impl;
 tglBindTexture glBindTexture_impl;
+tglXChooseVisual glXChooseVisual_impl;
 tglXCreateContext glXCreateContext_impl;
 tglXDestroyContext glXDestroyContext_impl;
 tglXMakeCurrent glXMakeCurrent_impl;
@@ -221,6 +222,10 @@ void glDeleteTextures(GLsizei n, const GLuint* textures) {
 
 void glBindTexture(GLenum target, GLuint texture) {
   return glBindTexture_impl(target, texture);
+}
+
+XVisualInfo* glXChooseVisual(Display* dpy, int screen, int* attribList) {
+  return glXChooseVisual_impl(dpy, screen, attribList);
 }
 
 GLXContext glXCreateContext(Display* dpy, XVisualInfo* vis, GLXContext shareList, int direct) {
@@ -360,6 +365,7 @@ int glcewInit(void) {
   GL_LIBRARY_FIND_IMPL(glGenTextures);
   GL_LIBRARY_FIND_IMPL(glDeleteTextures);
   GL_LIBRARY_FIND_IMPL(glBindTexture);
+  GL_LIBRARY_FIND_IMPL(glXChooseVisual);
   GL_LIBRARY_FIND_IMPL(glXCreateContext);
   GL_LIBRARY_FIND_IMPL(glXDestroyContext);
   GL_LIBRARY_FIND_IMPL(glXMakeCurrent);
