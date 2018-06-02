@@ -1,0 +1,35 @@
+LibGL Core Functions extension wrangler
+=======================================
+
+NOTE: This is more an experiment, to see what we can do.
+      Some of the stuff is not finished, or is not done at the nicest
+      way. Mainly since that's all dependent on how exactly this wrangler
+      is used, and which else libraries are used together with it.
+
+LibGL Core Extension Wrangler (GLCEW) is a cross-platform open-source
+C/C++ extension loading wrangler. It allows to avoid application to be
+linked against libGL libraries by doing runtime open of dynamic libraries.
+This allows to have software which can gracefully handle situations when
+OpenGL libraries are not nstalled on the system. The usecases of this are:
+
+- Software which can either run in headed and headless mode. Using this
+  wrangler allows to run software on compute farms of all sorts.
+
+- Detect which XCB or other GUI protocol to use. It might be Wayland or even
+  something more obscure.
+
+There are two levels of wrangling:
+
+- Functions which are considered safe to be a function pointers, are
+  read as function pointers. This includes such functions as GLX's
+  glXGetProcAddressARB().
+
+- OpenGL Core functions are not really safe to be such function pointers,
+  so for them this wrangler has a stub/wrapper implementation, which
+  mimics original function declaration, and passes calls to a symbol
+  which was dynamically load.
+
+LICENSE
+=======
+
+GLCEW library is released under the Apache 2.0 license.
