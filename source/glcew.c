@@ -97,11 +97,13 @@ tglPolygonMode glPolygonMode_impl;
 tglScissor glScissor_impl;
 tglEnable glEnable_impl;
 tglDisable glDisable_impl;
+tglIsEnabled glIsEnabled_impl;
 tglGetBooleanv glGetBooleanv_impl;
 tglGetDoublev glGetDoublev_impl;
 tglGetFloatv glGetFloatv_impl;
 tglGetIntegerv glGetIntegerv_impl;
 tglGetString glGetString_impl;
+tglFlush glFlush_impl;
 tglViewport glViewport_impl;
 tglDrawArrays glDrawArrays_impl;
 tglDrawElements glDrawElements_impl;
@@ -160,6 +162,10 @@ void glDisable(GLenum cap) {
   return glDisable_impl(cap);
 }
 
+GLboolean glIsEnabled(GLenum cap) {
+  return glIsEnabled_impl(cap);
+}
+
 void glGetBooleanv(GLenum pname, GLboolean* params) {
   return glGetBooleanv_impl(pname, params);
 }
@@ -178,6 +184,10 @@ void glGetIntegerv(GLenum pname, GLint* params) {
 
 const GLubyte* glGetString(GLenum name) {
   return glGetString_impl(name);
+}
+
+void glFlush() {
+  return glFlush_impl();
 }
 
 void glViewport(GLint x, GLint y, GLsizei width, GLsizei height) {
@@ -349,11 +359,13 @@ int glcewInit(void) {
   GL_LIBRARY_FIND_IMPL(glScissor);
   GL_LIBRARY_FIND_IMPL(glEnable);
   GL_LIBRARY_FIND_IMPL(glDisable);
+  GL_LIBRARY_FIND_IMPL(glIsEnabled);
   GL_LIBRARY_FIND_IMPL(glGetBooleanv);
   GL_LIBRARY_FIND_IMPL(glGetDoublev);
   GL_LIBRARY_FIND_IMPL(glGetFloatv);
   GL_LIBRARY_FIND_IMPL(glGetIntegerv);
   GL_LIBRARY_FIND_IMPL(glGetString);
+  GL_LIBRARY_FIND_IMPL(glFlush);
   GL_LIBRARY_FIND_IMPL(glViewport);
   GL_LIBRARY_FIND_IMPL(glDrawArrays);
   GL_LIBRARY_FIND_IMPL(glDrawElements);

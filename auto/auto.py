@@ -53,6 +53,8 @@ WRAPPER_FUNCTIONS = (
     "glTexImage2D",
     "glTexParameteri",
     "glViewport",
+    "glIsEnabled",
+    "glFlush",
 )
 
 # Those functions are exposed to API as a function pointers, but are read from
