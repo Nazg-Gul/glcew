@@ -35,6 +35,7 @@ WRAPPER_FUNCTIONS = (
     "glClear",
     "glClearColor",
     "glDeleteTextures",
+    "glDepthFunc",
     "glDisable",
     "glDrawArrays",
     "glDrawElements",

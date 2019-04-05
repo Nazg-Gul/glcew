@@ -106,6 +106,7 @@ tglGetFloatv glGetFloatv_impl;
 tglGetIntegerv glGetIntegerv_impl;
 tglGetString glGetString_impl;
 tglFlush glFlush_impl;
+tglDepthFunc glDepthFunc_impl;
 tglViewport glViewport_impl;
 tglDrawArrays glDrawArrays_impl;
 tglDrawElements glDrawElements_impl;
@@ -190,6 +191,10 @@ const GLubyte* glGetString(GLenum name) {
 
 void glFlush() {
   return glFlush_impl();
+}
+
+void glDepthFunc(GLenum func) {
+  return glDepthFunc_impl(func);
 }
 
 void glViewport(GLint x, GLint y, GLsizei width, GLsizei height) {
@@ -368,6 +373,7 @@ int glcewInit(void) {
   GL_LIBRARY_FIND_IMPL(glGetIntegerv);
   GL_LIBRARY_FIND_IMPL(glGetString);
   GL_LIBRARY_FIND_IMPL(glFlush);
+  GL_LIBRARY_FIND_IMPL(glDepthFunc);
   GL_LIBRARY_FIND_IMPL(glViewport);
   GL_LIBRARY_FIND_IMPL(glDrawArrays);
   GL_LIBRARY_FIND_IMPL(glDrawElements);
