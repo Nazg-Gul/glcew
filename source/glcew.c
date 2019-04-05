@@ -73,7 +73,7 @@ typedef void* DynamicLibrary;
           assert(name);                                                        \
         } while (0)
 
-#define _LIBRARY_FIND_IMPL(lib, name) \
+#define _LIBRARY_FIND_IMPL(lib, name)                                          \
         do {                                                                   \
           GLUE(name, IMPL_SUFFIX) = (t##name)dynamic_library_find(lib, #name); \
         } while (0)

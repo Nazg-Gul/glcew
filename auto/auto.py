@@ -132,9 +132,9 @@ class Function:
         """
         self.return_type = "void"
         self.name = cursor.spelling
-        self.return_type = formatAndCleanType(cursor.result_type.spelling)
+        self.return_type = formatAndCleanType(cursor.type.get_result().spelling)
         self.arguments = []
-        for child in cursor.get_children():
+        for child in cursor.get_arguments():
             if child.kind == CursorKind.PARM_DECL:
                 argument = Argument(child)
                 if not argument.name:
