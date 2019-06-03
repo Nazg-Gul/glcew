@@ -97,6 +97,8 @@ tglClear glClear_impl;
 tglBlendFunc glBlendFunc_impl;
 tglPolygonMode glPolygonMode_impl;
 tglScissor glScissor_impl;
+tglDrawBuffer glDrawBuffer_impl;
+tglReadBuffer glReadBuffer_impl;
 tglEnable glEnable_impl;
 tglDisable glDisable_impl;
 tglIsEnabled glIsEnabled_impl;
@@ -111,6 +113,7 @@ tglViewport glViewport_impl;
 tglDrawArrays glDrawArrays_impl;
 tglDrawElements glDrawElements_impl;
 tglPixelStorei glPixelStorei_impl;
+tglReadPixels glReadPixels_impl;
 tglTexParameteri glTexParameteri_impl;
 tglGetTexLevelParameteriv glGetTexLevelParameteriv_impl;
 tglTexImage2D glTexImage2D_impl;
@@ -155,6 +158,14 @@ void glPolygonMode(GLenum face, GLenum mode) {
 
 void glScissor(GLint x, GLint y, GLsizei width, GLsizei height) {
   return glScissor_impl(x, y, width, height);
+}
+
+void glDrawBuffer(GLenum mode) {
+  return glDrawBuffer_impl(mode);
+}
+
+void glReadBuffer(GLenum mode) {
+  return glReadBuffer_impl(mode);
 }
 
 void glEnable(GLenum cap) {
@@ -211,6 +222,10 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid* indic
 
 void glPixelStorei(GLenum pname, GLint param) {
   return glPixelStorei_impl(pname, param);
+}
+
+void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid* pixels) {
+  return glReadPixels_impl(x, y, width, height, format, type, pixels);
 }
 
 void glTexParameteri(GLenum target, GLenum pname, GLint param) {
@@ -364,6 +379,8 @@ int glcewInit(void) {
   GL_LIBRARY_FIND_IMPL(glBlendFunc);
   GL_LIBRARY_FIND_IMPL(glPolygonMode);
   GL_LIBRARY_FIND_IMPL(glScissor);
+  GL_LIBRARY_FIND_IMPL(glDrawBuffer);
+  GL_LIBRARY_FIND_IMPL(glReadBuffer);
   GL_LIBRARY_FIND_IMPL(glEnable);
   GL_LIBRARY_FIND_IMPL(glDisable);
   GL_LIBRARY_FIND_IMPL(glIsEnabled);
@@ -378,6 +395,7 @@ int glcewInit(void) {
   GL_LIBRARY_FIND_IMPL(glDrawArrays);
   GL_LIBRARY_FIND_IMPL(glDrawElements);
   GL_LIBRARY_FIND_IMPL(glPixelStorei);
+  GL_LIBRARY_FIND_IMPL(glReadPixels);
   GL_LIBRARY_FIND_IMPL(glTexParameteri);
   GL_LIBRARY_FIND_IMPL(glGetTexLevelParameteriv);
   GL_LIBRARY_FIND_IMPL(glTexImage2D);
