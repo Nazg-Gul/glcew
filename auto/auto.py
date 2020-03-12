@@ -59,6 +59,7 @@ WRAPPER_FUNCTIONS = (
     "glViewport",
     "glIsEnabled",
     "glFlush",
+    'glFinish',
 )
 
 # Those functions are exposed to API as a function pointers, but are read from
